@@ -1,6 +1,6 @@
 #Guess The Number Game in Python
 import random
-logo=''' _______           _______  _______  _______       _________          _______        _                 _______  ______   _______  _______ 
+logo=''' _______           _______  _______  _______       _________          _______        _                 _______  ______   _______  _______
 (  ____ \|\     /|(  ____ \(  ____ \(  ____ \      \__   __/|\     /|(  ____ \      ( (    /||\     /|(       )(  ___ \ (  ____ \(  ____ )
 | (    \/| )   ( || (    \/| (    \/| (    \/         ) (   | )   ( || (    \/      |  \  ( || )   ( || () () || (   ) )| (    \/| (    )|
 | |      | |   | || (__    | (_____ | (_____          | |   | (___) || (__          |   \ | || |   | || || || || (__/ / | (__    | (____)|
@@ -17,8 +17,10 @@ HARD_LEVEL_ATTEMPTS=5
 def set_difficulty(level_chosen):
     if level_chosen=='easy':
         return EASY_LEVEL_ATTEMPTS
-    else:
+    elif level_chosen=='hard:
         return HARD_LEVEL_ATTEMPTS
+   else:
+        return
 
 def check_answer(guessed_number,answer,attempts):
     if guessed_number<answer:
@@ -35,6 +37,9 @@ def game():
     answer=random.randint(1,50)
     level=input("Choose level of difficulty...Type 'easy' or 'hard': ").lower()
     attempts=set_difficulty(level)
+    if attempts!=EASY_LEVEL_ATTEMPTS and attempts!=HARD_LEVEL_ATTEMPTS:
+        print("You have entered wrong difficulty level...Play again!")
+        return
 
     guessed_number=0
     while guessed_number!=answer:
